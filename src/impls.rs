@@ -19,3 +19,17 @@ impl<T: Future> Future for WeirdMutex<T> {
         self.pinned_get_mut().poll(cx)
     }
 }
+
+#[cfg(feature = "stream")]
+mod stream_impl {
+    use super::*;
+    use futures_core::stream::Stream;
+
+    impl<T: Stream> Stream for WeirdMutex<T> {
+        type Item = T::Item;
+
+        fn poll_next(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {
+            self.pinned_get_mut().poll_next(cx)
+        }
+    }
+}
