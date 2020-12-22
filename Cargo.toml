@@ -1,0 +1,10 @@
+[package]
+name = "weird-mutex"
+version = "0.1.0"
+authors = ["Mikail Bagishov <bagishov.mikail@yandex.ru>"]
+edition = "2018"
+license = "MIT or APACHE2"
+description = "Simple utility for relaxing unneeded Sync bounds."
+repository = "https://github.com/MikailBag/weird-mutex"
+categories = ["rust-patterns"]
+[dependencies]
